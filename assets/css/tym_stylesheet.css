@@ -1,0 +1,309 @@
+/*
+	Track Your Money
+	Cascading Style Sheet
+	Shiena Kaye Cadiz
+	Copyright 2014.
+	shienacadiz@yahoo.com
+*/
+body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 14px;
+	background: url(../img/BG_blue.png) center repeat;
+	min-height: 100%;
+}
+
+#tym_wrapper {
+	width: 1000px;
+	margin: auto;
+}
+
+#tym_login_logo {
+	text-align: center;
+}
+
+#tym_common_box {
+	background-color: #FFF;
+	background: rgba(255, 255, 255, 0.6);
+	border: 1px solid #666666;
+	filter:alpha(opacity=60);
+	/*height:180px;*/
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	padding-top:25px;
+	padding-bottom:25px;
+}
+
+#tym_common_invisible_box {
+	height:auto;
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#tym_login_button a{
+	outline: none;
+	text-indent: -5000px;
+	display: block;
+	width: 166px;
+	height: 63px;
+	margin-left:auto;
+	margin-right:auto;
+	background: url(../img/login_button.png);
+}
+
+#tym_login_button a:hover{
+	background-position: 0 126px;
+}
+
+#tym_login_button a:active{
+	background-position: 0 63px;
+}
+
+#tym_register_button a{
+	outline: none;
+	text-indent: -5000px;
+	display: block;
+	width: 166px;
+	height: 63px;
+	margin-left:auto;
+	margin-right:auto;
+	background: url(../img/register_button.png);
+}
+
+#tym_register_button a:hover{
+	background-position: 0 126px;
+}
+
+#tym_register_button a:active{
+	background-position: 0 63px;
+}
+
+#tym_login_blue_box {
+	color: #FFF;
+	background-color:#003399;
+	width:500px;
+    margin-right:auto;
+    margin-left:auto;
+	border-radius: 5px 5px 5px 5px;
+}
+
+table.center {
+    margin-right:auto;
+    margin-left:auto; 
+}
+
+h1.header {
+	color:#003399;
+}
+
+.blue_label {
+	color:#003399;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.tym_notice {
+	color:#FFF;
+	font-size:14px;
+	background-color:#F00;
+	width:350px;
+    margin-right:auto;
+    margin-left:auto; 
+}
+
+.blue_button {
+	font-size: 12px; 
+	background: #BBCCEE; 
+	color: #036; 
+	cursor: pointer; 
+	border: 1px solid #669; 
+	padding: 5px 10px;
+	margin: 0px;
+}
+
+.blue_button:hover {
+	color:#FFF;
+}
+
+.blue_link {
+	color:#003399;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.blue_link:hover {
+	color:#FFF;	
+}
+
+.center { text-align:center; }
+.right { text-align:right; }
+.left { text-align: left; }
+.blue { color:#003399; }
+.bold { font-weight:bold; }
+
+h1, h2 , h3 {
+	color: #083795;
+	padding: 0;
+}
+
+b {
+	color: #083795;
+}
+#tym_content_wrapper {
+	background-color: #FFF;
+	height: 100%;
+	min-height: 400px;
+    overflow:hidden;
+	background: rgba(255, 255, 255, 0.7);
+	border: 1px solid #666666;
+	filter:alpha(opacity=60);
+	background-position: center;
+	border-left:1px solid #666666;
+	border-right:1px solid #666666;
+}
+
+#tym_header {
+	width:1000px;
+	height:195px;
+	background:url(../img/tym_header.png);	
+	border-radius: 15px 15px 0 0;
+}
+
+#tym_menubar {
+	width:1000px;
+	height:47px;
+	background:url(../img/menu_bar.png);
+	position:relative;
+}
+#tym_menubar li{
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:absolute;
+	top:0;
+}
+#tym_menubar li, #tym_menubar a{
+	height:47px;
+	display:block;
+}
+#menu_home { left:251px; width:134px; background-position: 251px 0px; }
+#menu_home a:hover, #menu_home a.active { background:url(menu_bar.png) -251px 47px; }
+
+#menu_reports { left:385px; width:133px; background-position: 385px 0px; }
+#menu_reports a:hover, #menu_reports a.active { background:url(menu_bar.png) -385px 47px; }
+
+#menu_savings { left:518px; width:133px; background-position: 518px 0px; }
+#menu_savings a:hover, #menu_savings a.active { background:url(menu_bar.png) -518px 47px; }
+
+#menu_settings { left:651px; width:133px; background-position: 651px 0px; }
+#menu_settings a:hover, #menu_settings a.active { background:url(menu_bar.png) -651px 47px; }
+
+#menu_logout { left:784px; width:133px; background-position: 784px 0px; }
+#menu_logout a:hover, #menu_logout a.active { background:url(menu_bar.png) -784px 47px; }
+
+#tym_menubar.reports { background-position: 0 439px; }
+#tym_menubar.savings { background-position: 0 392px; }
+#tym_menubar.settings { background-position: 0 345px; }
+#tym_menubar.logout { background-position: 0 298px; }
+
+#tym_sidebar {
+	float:left;
+	width:248px;
+}
+
+#tym_sidebar_holder {
+	background-color:#CCC;
+	margin:10px;
+	/*border: 1px solid #153C8C;*/
+}
+
+#tym_sidebar_transactions {
+	background:	url(../img/transactions.png);
+	height:48px;
+	width:228px;
+}
+
+#tym_sidebar_setup {
+	background:	url(../img/setup.png);
+	height:48px;
+	width:228px;
+}
+
+#tym_sidebar_menu_box {
+	padding: 10px 10px;
+}
+
+#tym_sidebar_menu_box .menu_list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-indent: 20px;
+}
+
+#tym_sidebar_menu_box .menu_list li {
+	padding: 5px 0;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #999999;
+}
+
+#tym_sidebar_menu_box .menu_list li a {
+	text-decoration: none;
+	color:#373737;
+}
+
+#tym_sidebar_menu_box .menu_list li a:hover,
+#tym_sidebar_menu_box .menu_list li a.active {
+	text-decoration: none;
+	color:#153C8C;
+	font-weight:bold;
+}
+
+#tym_sidebar_menu_box .menu_list li.first {
+	border-top: none;	
+}
+
+#tym_sidebar_menu_box .menu_list li.last {
+	border-bottom: none;	
+}
+
+#tym_right_content_wrapper{
+	display:block;
+	position:relative;
+	float:right;
+	width:730px;
+	padding: 10px;
+}
+
+#tym_right_content {
+	background-color:#FFF;
+	padding: 10px;
+	padding-bottom: 30px;
+	border: 1px #CCCCCC solid;
+	min-height: 350px
+}
+#tym_error_wrapper {
+	height: 25px;
+	padding: 5px;
+}
+#tym_error_wrapper .message {
+	height: 20px;
+	color: white;
+	background-color: red;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
+}
+#tym_footer {
+	height: 68px;
+	color: #FFF;
+	text-align: center;
+	background: url(../img/footer.jpg);
+	background-position: center;
+	background-repeat: repeat-x;
+	margin-top: 0;
+	padding: 0;
+	border-radius: 0 0 15px 15px;
+}
