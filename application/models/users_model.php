@@ -26,5 +26,11 @@ class Users_model extends CI_Model {
 		$query = $this->db->get_where('users', array('username' => $code));
 		return $query->row_array();
 	}
+	
+	public function get_user_account($username = FALSE, $password = FALSE) {
+		$encrypt_pass = md5($password);
+		$query = $this->db->get_where('users', array('username' => $username, 'password' => $encrypt_pass));
+		return $query->row_array();
+	}
 }
 ?>

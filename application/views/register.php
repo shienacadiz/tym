@@ -6,7 +6,7 @@
 		<script src="<?php echo "$base/$jquery"; ?>"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo "$base/$css"; ?>"/>
 		<script>
-			function validateForm() {
+			function validate_form() {
 				var error_message = "";
 				var submit = true;
 				var existing_users = <?php echo json_encode($existing_users); ?>;
@@ -89,9 +89,9 @@
 					<div class='message'><label id='error_message' name='error_message'></label></div>
 				</div>
                 <div id="tym_register_button">
-                    <a href="javascript:validateForm();">Register</a>
+                    <a href="javascript:validate_form();">Register</a>
                 </div>
-                <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" onclick="return validateForm();"/>
+                <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" onclick="return validate_form();"/>
             </form>
         </div>
         <br/>

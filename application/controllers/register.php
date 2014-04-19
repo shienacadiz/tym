@@ -6,9 +6,6 @@ class Register extends CI_Controller {
 	}
 	
 	public function index() {
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-	
 		$data['base']= $this->config->item('base_url');
 		$data['css'] = $this->config->item('css');
 		$data['jquery'] = $this->config->item('jquery');
