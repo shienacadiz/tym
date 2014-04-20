@@ -6,7 +6,7 @@
 		<script src="<?php echo "$base/$jquery"; ?>"></script>
 		<script type="text/javascript">
 			function delayer(){
-				window.location = "home.php"
+				window.location = "home"
 			}
 			function validate_form() {
 				var submit = true;
