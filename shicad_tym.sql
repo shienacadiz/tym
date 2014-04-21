@@ -1,3 +1,4 @@
+-------------- get_overall_budget (money_model) --------------------------------------------------
 DELIMITER $$
 CREATE FUNCTION get_overall_budget (id int)
 RETURNS DECIMAL(10,2)
@@ -12,7 +13,7 @@ BEGIN
 	RETURN _total_money;
 END $$
 DELIMITER ;
----------------------------------------------------------------------------------------
+-------------- get_expenses_by_cycle (expenses_model) -----------------------------------------
 DELIMITER $$
 CREATE FUNCTION get_expenses_by_cycle 
 (
@@ -47,7 +48,7 @@ BEGIN
 RETURN _total_expenses;
 END $$
 DELIMITER ;
----------------------------------------------------
+-------------- get_service_charge_by_cycle (withdraws_model) ----------------------
 DELIMITER $$
 CREATE FUNCTION get_service_charge_by_cycle (id INT)
 RETURNS DECIMAL(10,2)
@@ -57,7 +58,7 @@ BEGIN
 RETURN IFNULL(_service_charge, 0);
 END $$
 DELIMITER ;
-------------------------------------------------------
+--------------- get_total_remaining_money (money_model) -------------------------------
 DELIMITER $$
 CREATE FUNCTION get_total_remaining_money (username varchar(20), id INT)
 RETURNS DECIMAL(10,2)
@@ -84,7 +85,7 @@ BEGIN
 	RETURN _total_remaining;
 END $$
 DELIMITER ;
------------------------------------------------------------------
+----------------- get_remaining_on_bank (money_model) -----------------------------------
 DELIMITER $$
 CREATE FUNCTION get_remaining_on_bank (id INT)
 RETURNS DECIMAL(10,2)
@@ -104,7 +105,7 @@ BEGIN
 	RETURN _remaining_on_bank;
 END $$
 DELIMITER ;
------------------------------------------------------------------
+---------------- get_remaining_on_hand (money_model) -----------------------------------
 DELIMITER $$
 CREATE FUNCTION get_remaining_on_hand (username varchar(20), id INT)
 RETURNS DECIMAL(10,2)

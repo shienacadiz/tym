@@ -189,19 +189,19 @@ b {
 	display:block;
 }
 #menu_home { left:251px; width:134px; background-position: 251px 0px; }
-#menu_home a:hover, #menu_home a.active { background:url(menu_bar.png) -251px 47px; }
+#menu_home a:hover, #menu_home a.active { background:url(../img/menu_bar.png) -251px 47px; }
 
 #menu_reports { left:385px; width:133px; background-position: 385px 0px; }
-#menu_reports a:hover, #menu_reports a.active { background:url(menu_bar.png) -385px 47px; }
+#menu_reports a:hover, #menu_reports a.active { background:url(../img/menu_bar.png) -385px 47px; }
 
 #menu_savings { left:518px; width:133px; background-position: 518px 0px; }
-#menu_savings a:hover, #menu_savings a.active { background:url(menu_bar.png) -518px 47px; }
+#menu_savings a:hover, #menu_savings a.active { background:url(../img/menu_bar.png) -518px 47px; }
 
 #menu_settings { left:651px; width:133px; background-position: 651px 0px; }
-#menu_settings a:hover, #menu_settings a.active { background:url(menu_bar.png) -651px 47px; }
+#menu_settings a:hover, #menu_settings a.active { background:url(../img/menu_bar.png) -651px 47px; }
 
 #menu_logout { left:784px; width:133px; background-position: 784px 0px; }
-#menu_logout a:hover, #menu_logout a.active { background:url(menu_bar.png) -784px 47px; }
+#menu_logout a:hover, #menu_logout a.active { background:url(../img/menu_bar.png) -784px 47px; }
 
 #tym_menubar.reports { background-position: 0 439px; }
 #tym_menubar.savings { background-position: 0 392px; }

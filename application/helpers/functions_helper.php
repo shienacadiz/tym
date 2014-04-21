@@ -28,6 +28,7 @@ function verify_session() {
 
 //returns the string equivalent of numerical month (1 return 'Jan')
 function format_month($var){
+	$formatted = "";
 	if ($var == '1'){
 		$formatted = 'Jan';
 	}
