@@ -1,0 +1,54 @@
+MINOR TASKS TO DO FOR SITE FURNISHING
+!!! <-- indeed a MAJOR TASKS
+-----------------------------------------------------------------------------------------------------
+
+2. The refresh thing
+	- no post data pop up should be shown when refreshing therefore post data should be cleared
+4. !!! change naming convention - !!!
+6. Open printable page for reports
+	
+
+::: NAMING CONVENTION ::: <--- lot of things to do!!!
+function_variable <--- variables to forms
+	e.g.
+		edit_categoryId
+		del_expensesCode
+		
+if form name - start with small letters ::: edit_CategoryCode
+if variable name - starts with big letters ::: $Edit_CategoryCode
+if database field name - with underscores ::: category_code
+
+
+
+========================
+::: BUG FIXING ::::
+
+[DONE][1/23/2014] In expenses.php - when an expense is editted, amount is being validated incorrectly (exceeds the available. not considering itself)
+[DONE][1/23/2014] When moving to next cycle, money on hand/bank is being moved to next cycle even the amount is zero(0).
+[DONE][1/23/2014] cycle.php - if remaining money (on hand or on bank) is 0, form for transfer should be disabled.
+[DONE][1/29/2014] expenses.php - system should validate if entered date is already past the current cycle date
+[DONE][1/29/2014] money.php - system should validate negative amount values
+
+[DONE][1/22/2014] Either modify the datatype of the amounts or work on fixing the amounts when editted (99.99999; lots of decimals)
+		SOLUTION:
+		ALTER TABLE cycle modify starting_money DECIMAL(10,2);
+		ALTER TABLE expenses modify amount DECIMAL(10,2);
+		ALTER TABLE money modify amount DECIMAL(10,2);
+		ALTER TABLE savings modify amount DECIMAL(10,2);
+		ALTER TABLE withdraw modify amount DECIMAL(10,2);
+		ALTER TABLE withdraw modify service_charge DECIMAL(10,2);	
+[DONE][1/22/2014] GENERAL - when updating static data, system allows the same code name after update - this must be validated as well
+	- category
+	- resource
+[DONE][1/22/2014] withdraw.php - if nothing left on the bank, don't show the form
+[DONE][1/22/2014] withdraw.php - 'Current cash on hand' computation is wrong
+Add Cycle Money - List must be sorted by date
+Add Cycle Money - Date later than the cycle date must be validated correctly
+
+::: ENHANCEMENTS :: 
+- reports.php - When clicked a category expense, user will be directed to expenses.php 
+			wherein the expenses with that category is HIGHLIGHTED
+- Static data (category/resource) when adding/updating duplicate code name, highlight the row of the table that duplicates the user input
+- Static data (category/resource) when adding/updating duplicate code name, highlight the row of the table that has been changed/added
+
+
