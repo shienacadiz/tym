@@ -49,7 +49,7 @@
 				}
 				else {
 					$("#error_message").text(error_message);
-					$(".message").fadeIn();
+					$(".message").fadeIn("slow");
 					return false;
 				}
 			}

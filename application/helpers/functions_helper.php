@@ -68,11 +68,10 @@ function format_month($var){
 	return $formatted;
 }
 
-//populate the dropdown for month and automatically set the dropdown according to the parameter
+//populate the dropdown for month and automatically set the dropdown according to the parameter. 0 to default to none
 function show_month_dropdown($month) {
-	if($month == NULL) {
+	if($month == 0) {
 		echo "<option value=''>----</selected>";
-		$month = 0;
 	}
 	if($month == 1) {
 		echo "<option value='1' selected>JAN</option>";
@@ -148,11 +147,10 @@ function show_month_dropdown($month) {
 	}
 }
 
-//populate the dropdown for year and automatically set the dropdown according to the parameter
+//populate the dropdown for year and automatically set the dropdown according to the parameter. 0 to default to none
 function show_year_dropdown($year) {
-	if($year == NULL) {
+	if($year == 0) {
 		echo "<option value=''>----</selected>";
-		$year = 0;
 	}
 	if($year == 2009) {
 		echo "<option value='2009' selected>2009</selected>";
@@ -211,7 +209,7 @@ function show_year_dropdown($year) {
 }
 
 function show_day_dropdown($day) {
-	if($day == NULL) {
+	if($day == 0) {
 		echo "<option value=''>--</option>";
 	}
 	if($day == 1) {
