@@ -29,12 +29,12 @@
 							<tr>
 								<td class='left'>Overall budget</td>
 								<td>:</td>
-								<td class='left'></td>
+								<td class='left'><?php echo number_format($overall_budget,2); ?></td>
 							</tr>
 							<tr>
 								<td class='left'>Total Remaining</td>
 								<td>:</td>
-								<td class='left'></td>
+								<td class='left'><?php echo number_format($total_remaining,2); ?></td>
 							</tr>
 							<?php
 							if($this->session->userdata('banking_flag')) {
@@ -42,12 +42,12 @@
 								<tr>
 									<td class='left'>On Bank</td>
 									<td>:</td>
-									<td class='left'></td>
+									<td class='left'><?php echo number_format($on_bank,2); ?></td>
 								</tr>
 								<tr>
 									<td class='left'>On Hand</td>
 									<td>:</td>
-									<td class='left'></td>
+									<td class='left'><?php echo number_format($on_hand,2); ?></td>
 								</tr>
 							<?php
 							}
@@ -55,15 +55,21 @@
 							<tr>
 								<td class='left'>Total Expenses</td>
 								<td>:</td>
-								<td class='left'></td>
+								<td class='left'><?php echo number_format($total_expenses,2); ?></td>
 							</tr>
-							<tr>
-								<td class='left'>
-									Service charges on withdrawals
-								</td>
-								<td>:</td>
-								<td class='left'></td>
-							</tr>
+							<?php
+							if($service_charges > 0) {
+							?>
+								<tr>
+									<td class='left'>
+										Service charges on withdrawals
+									</td>
+									<td>:</td>
+									<td class='left'><?php echo number_format($service_charges,2); ?></td>
+								</tr>
+							<?php
+							}
+							?>
 						</table>
 					</div>
 				</div>

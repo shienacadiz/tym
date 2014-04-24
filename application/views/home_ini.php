@@ -98,7 +98,7 @@
 	<body>
 		<div id="tym_wrapper">
 			<div id="tym_common_invisible_box" style="width:600px">
-				<a href='logout' class="blue_link right" style="display:block;">Log out</a>
+				<a href='logout' class="blue_link right" style="display:block;">Log out-></a>
 			</div>
 			<div id="tym_common_box" style="width:600px">
 				<div class="blue bold">To continue using this tracker, you are required to enter the following information:</div><br/>

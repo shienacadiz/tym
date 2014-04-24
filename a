@@ -1,0 +1,128 @@
+[1mdiff --git a/application/controllers/home.php b/application/controllers/home.php[m
+[1mindex 2ca0199..ea67fab 100644[m
+[1m--- a/application/controllers/home.php[m
+[1m+++ b/application/controllers/home.php[m
+[36m@@ -3,6 +3,8 @@[m [mclass Home extends CI_Controller {[m
+ 	public function __construct() {[m
+ 		parent::__construct();[m
+ 		$this->load->model('cycle_model');[m
+[32m+[m		[32m$this->load->model('resources_model');[m
+[32m+[m		[32m$this->load->model('money_model');[m
+ 	}[m
+ 	[m
+ 	public function index() {[m
+[36m@@ -14,7 +16,49 @@[m [mclass Home extends CI_Controller {[m
+ 		//check first if the user has an existing cycle[m
+ 		if(! $this->session->userdata('cycle_id')) { // no initialised cycle yet[m
+ 			if($_POST) { // run insert for cycle then display homepage[m
+[31m-			[m
+[32m+[m				[32mprint_r($_POST); die();[m
+[32m+[m				[32m$resource_id = $this->resources_model->new_resources	// adding the initial resource[m
+[32m+[m					[32m(	$this->session->userdata('username'),[m
+[32m+[m						[32m$this->input->post('resource_code'),[m
+[32m+[m						[32m'Initial Resource'[m
+[32m+[m					[32m);[m
+[32m+[m				[32m$cycle_starting_money = $this->input->post('starting_money_hand');[m
+[32m+[m				[32m$cycle_flag = 1;[m
+[32m+[m				[32mif($this->input->post('enable_banking')) {[m
+[32m+[m					[32m//check which is higher - bank or in hand. Higher will be put in cycle table. lower would be in money table[m
+[32m+[m					[32m$money_amount = $this->input->post('starting_money_bank');[m
+[32m+[m					[32m$money_flag = 2;[m
+[32m+[m					[32mif($cycle_starting_money < $this->input->post('starting_money_bank')) {[m
+[32m+[m						[32m$cycle_starting_money = $this->input->post('starting_money_bank');[m
+[32m+[m						[32m$cycle_flag = 2;	// on bank[m
+[32m+[m[41m						[m
+[32m+[m						[32m$money_amount = $this->input->post('starting_money_hand');[m
+[32m+[m						[32m$money_flag = 1;	// on hand[m
+[32m+[m					[32m}[m
+[32m+[m				[32m}[m
+[32m+[m				[32m$cycle_id = $this->cycle_model->new_cycle[m
+[32m+[m					[32m(	$this->session->userdata('username'),[m
+[32m+[m						[32m$this->input->post('from_month'),[m
+[32m+[m						[32m$this->input->post('from_day'),[m
+[32m+[m						[32m$this->input->post('from_year'),[m
+[32m+[m						[32m"", "", "",[m
+[32m+[m						[32m$cycle_starting_money,[m
+[32m+[m						[32m$resource_id,[m
+[32m+[m						[32m$cycle_flag[m
+[32m+[m					[32m);[m
+[32m+[m				[32mif($this->input->post('enable_banking')) {	// can put above cause we need the cycle_id[m
+[32m+[m					[32m$this->money_model->new_money[m
+[32m+[m						[32m(	$this->session->userdata('username'),[m
+[32m+[m							[32m$cycle_id,[m
+[32m+[m							[32m$resource_id,[m
+[32m+[m							[32m$this->input->post('from_month'),[m
+[32m+[m							[32m$this->input->post('from_day'),[m
+[32m+[m							[32m$this->input->post('from_year'),[m
+[32m+[m							[32m'Initial Money',[m
+[32m+[m							[32m$money_amount,[m
+[32m+[m							[32m$money_flag[m[41m [m
+[32m+[m						[32m);[m
+[32m+[m				[32m}[m
+ 			}[m
+ 			else {	// display the form[m
+ 				$display_homepage = FALSE;[m
+[1mdiff --git a/application/models/cycle_model.php b/application/models/cycle_model.php[m
+[1mindex ad9347b..085293f 100644[m
+[1m--- a/application/models/cycle_model.php[m
+[1m+++ b/application/models/cycle_model.php[m
+[36m@@ -9,6 +9,34 @@[m [mclass Cycle_model extends CI_Model {[m
+ 		return $query->row_array();[m
+ 	}[m
+ */	[m
+[32m+[m	[32mpublic function new_cycle	// TO dates are optional. returns the ID[m
+[32m+[m		[32m(	$user,[m
+[32m+[m			[32m$from_month,[m
+[32m+[m			[32m$from_day,[m
+[32m+[m			[32m$from_year,[m
+[32m+[m			[32m$to_month = 0,[m
+[32m+[m			[32m$to_day = 0,[m
+[32m+[m			[32m$to_year = 0,[m
+[32m+[m			[32m$starting_money,[m
+[32m+[m			[32m$resource_id,[m
+[32m+[m			[32m$onHand_onBank[m
+[32m+[m		[32m) {[m
+[32m+[m		[32m$data = array([m
+[32m+[m			[32m'user' => $user,[m
+[32m+[m			[32m'from_month' => $from_month,[m
+[32m+[m			[32m'from_day' => $from_day,[m
+[32m+[m			[32m'from_year' => $from_year,[m
+[32m+[m			[32m'to_month' => $to_month,[m
+[32m+[m			[32m'to_day' => $to_day,[m
+[32m+[m			[32m'to_year' => $to_year,[m
+[32m+[m			[32m'starting_money' => $starting_money,[m
+[32m+[m			[32m'resource_id' => $resource_id,[m
+[32m+[m			[32m'onHand_onBank' => $onHand_onBank[m
+[32m+[m		[32m);[m
+[32m+[m		[32m$this->db->insert('cycle', $data);[m
+[32m+[m		[32mreturn $this->db->insert_id();[m
+[32m+[m[41m	[m
+[32m+[m	[32m}[m
+ 	public function get_start_date($cycle_id) {[m
+ 		$this->db->select('from_month, from_day, from_year');[m
+ 		$query = $this->db->get_where('cycle', array('cycle_id' => $cycle_id));[m
+[1mdiff --git a/application/views/home_ini.php b/application/views/home_ini.php[m
+[1mindex cc90758..4cba6cb 100644[m
+[1m--- a/application/views/home_ini.php[m
+[1m+++ b/application/views/home_ini.php[m
+[36m@@ -98,7 +98,7 @@[m
+ 	<body>[m
+ 		<div id="tym_wrapper">[m
+ 			<div id="tym_common_invisible_box" style="width:600px">[m
+[31m-				<a href='logout' class="blue_link right" style="display:block;">Log out</a>[m
+[32m+[m				[32m<a href='logout' class="blue_link right" style="display:block;">Log out-></a>[m
+ 			</div>[m
+ 			<div id="tym_common_box" style="width:600px">[m
+ 				<div class="blue bold">To continue using this tracker, you are required to enter the following information:</div><br/>[m
+[1mdiff --git a/application/views/register.php b/application/views/register.php[m
+[1mindex 9d27eb6..67a0242 100644[m
+[1m--- a/application/views/register.php[m
+[1m+++ b/application/views/register.php[m
+[36m@@ -21,6 +21,7 @@[m
+ 					for(x=0 ; x<existing_users.length && submit == true ; x++) {[m
+ 						if(existing_users[x].username == username) {[m
+ 							error_message = "Username already exist";[m
+[32m+[m							[32m$("#reg_username").focus();[m
+ 							submit = false;[m
+ 						}[m
+ 					}	[m

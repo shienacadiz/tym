@@ -21,9 +21,6 @@ function verify_session() {
 		<?php
 		die();
 	}
-	else {
-		$session_username = $CI->session->userdata('username');
-	}
 }
 
 //returns the string equivalent of numerical month (1 return 'Jan')

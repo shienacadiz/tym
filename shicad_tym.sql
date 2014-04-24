@@ -8,7 +8,7 @@ BEGIN
 	DECLARE _topup_money DECIMAL(10,2);
 	DECLARE _total_money DECIMAL(10,2);
 	SET _starting_money = (SELECT starting_money FROM cycle WHERE cycle_id = id);
-	SET _topup_money = (SELECT SUM(amount) FROM money WHERE cycle_id = id);
+	SET _topup_money = IFNULL((SELECT SUM(amount) FROM money WHERE cycle_id = id),0);
 	SET _total_money = _starting_money + _topup_money;
 	RETURN _total_money;
 END $$
@@ -45,10 +45,10 @@ BEGIN
 					STR_TO_DATE(_to_date,'%m-%d-%Y') >= STR_TO_DATE(CONCAT(month,'-',day,'-',year),'%m-%d-%Y'));
 	END;
 	END IF;
-RETURN _total_expenses;
+RETURN IFNULL(_total_expenses,0);
 END $$
 DELIMITER ;
--------------- get_service_charge_by_cycle (withdraws_model) ----------------------
+-------------- get_service_charge_by_cycle (withdraw_model) ----------------------
 DELIMITER $$
 CREATE FUNCTION get_service_charge_by_cycle (id INT)
 RETURNS DECIMAL(10,2)
@@ -75,12 +75,12 @@ BEGIN
 	DECLARE _total_expenses DECIMAL(10,2);
 	DECLARE _service_charge DECIMAL(10,2);
 	DECLARE _total_remaining DECIMAL(10,2);
-	SET _total_budget  = (SELECT get_overall_budget(id));
+	SET _total_budget  = IFNULL((SELECT get_overall_budget(id)),0);
 	SELECT from_month, from_day, from_year, to_month, to_day, to_year
 		INTO _from_month, _from_day, _from_year, _to_month, _to_day, _to_year
 		FROM cycle WHERE user = username AND cycle_id = id;
-	SET _total_expenses = (SELECT get_expenses_by_cycle(username, _from_month, _from_day, _from_year, _to_month, _to_day, _to_year));
-	SET _service_charge = (SELECT get_service_charge_by_cycle(id));
+	SET _total_expenses = IFNULL((SELECT get_expenses_by_cycle(username, _from_month, _from_day, _from_year, _to_month, _to_day, _to_year)),0);
+	SET _service_charge = IFNULL((SELECT get_service_charge_by_cycle(id)),0);
 	SET _total_remaining = _total_budget - _total_expenses - _service_charge;
 	RETURN _total_remaining;
 END $$

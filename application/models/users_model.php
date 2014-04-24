@@ -17,6 +17,16 @@ class Users_model extends CI_Model {
 		return $this->db->insert('users', $data);
 	}
 	
+	public function edit_initial_settings($username, $cycle_id, $banking_flag, $savings_flag) {
+		$data = array(
+			'cycle_id' => $cycle_id,
+			'banking_flag' => $banking_flag,
+			'savings_flag' => $savings_flag
+		);
+		$this->db->where('username', $username);
+		$this->db->update('users', $data);
+	}
+	
 	public function get_users_by_code($code = FALSE) {
 		$this->db->select('username');
 		if ($code === FALSE) {

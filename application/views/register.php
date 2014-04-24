@@ -21,6 +21,7 @@
 					for(x=0 ; x<existing_users.length && submit == true ; x++) {
 						if(existing_users[x].username == username) {
 							error_message = "Username already exist";
+							$("#reg_username").focus();
 							submit = false;
 						}
 					}	
