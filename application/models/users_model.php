@@ -27,6 +27,15 @@ class Users_model extends CI_Model {
 		$this->db->update('users', $data);
 	}
 	
+	public function edit_flags($username, $banking_flag, $savings_flag) {
+		$data = array(
+			'banking_flag' => $banking_flag,
+			'savings_flag' => $savings_flag
+		);
+		$this->db->where('username', $username);
+		$this->db->update('users', $data);
+	}
+	
 	public function get_users_by_code($code = FALSE) {
 		$this->db->select('username');
 		if ($code === FALSE) {
