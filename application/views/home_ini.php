@@ -71,12 +71,12 @@
 				}
 				
 				if(submit) {
-					$(".message").fadeOut("slow");
+					$(".error").fadeOut("slow");
 					return true;
 				}
 				else {
 					$("#error_message").text(error_message);
-					$(".message").fadeIn("slow");
+					$(".error").fadeIn("slow");
 					return false;
 				}
 			}
@@ -87,7 +87,7 @@
 				});
 				$("input:reset").click(function() {
 					$('#starting_money_bank').attr('disabled', 'disabled');
-					$('.message').fadeOut('slow');
+					$('.error').fadeOut('slow');
 				});
 				$("input:submit").click(function() {
 					return validate_form();
@@ -149,8 +149,8 @@
 						</tr>
 						<tr>
 					</table>
-					<div id="tym_error_wrapper">
-						<div class='message'><label id='error_message' name='error_message'></label></div>
+					<div id="tym_msg_wrapper">
+						<div class='error'><label id='error_message' name='error_message'></label></div>
 					</div>
 					<center>
 						<input type='submit' class="blue_button" value='Submit' name='submit'/>

@@ -358,8 +358,7 @@ $config['proxy_ips'] = '';
 
 // SQC
 $config['css'] = "assets/css/tym_stylesheet.css";
-$config['jquery'] = "assets/js/jquery-2.1.0.js";
-$config['jquery_validate'] = "assets/js/jquery.validate.js";
+$config['jquery'] = "assets/js/jquery-2.1.0.min.js";
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

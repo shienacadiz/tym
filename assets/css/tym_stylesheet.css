@@ -281,16 +281,25 @@ b {
 	padding: 10px;
 	padding-bottom: 30px;
 	border: 1px #CCCCCC solid;
-	min-height: 350px
+	min-height: 350px;
 }
-#tym_error_wrapper {
+#tym_msg_wrapper {
 	height: 25px;
 	padding: 5px;
 }
-#tym_error_wrapper .message {
+#tym_msg_wrapper .error {
 	height: 20px;
 	color: white;
 	background-color: red;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	display: none;
+}
+#tym_msg_wrapper .notice {
+	height: 20px;
+	color: white;
+	background-color: #083795;
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;

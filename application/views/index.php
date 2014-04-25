@@ -24,18 +24,18 @@
 				}
 				
 				if(submit) {
-					$(".message").fadeOut("slow");
+					$(".error").fadeOut("slow");
 					$("#login_form").submit();
 				}
 				else {
 					$("#error_message").text(error_message);
-					$(".message").fadeIn();
+					$(".error").fadeIn();
 					return false;
 				}
 			}
 			$( document ).ready(function() {
 				if($("#error_message").text() != "") {
-					$(".message").fadeIn();
+					$(".error").fadeIn();
 				}
 			});
 		</script>
@@ -69,8 +69,8 @@
                         <input type='hidden' value='Login' name='submitted'/>
                     </tr>
                 </table>
-                <div id="tym_error_wrapper">
-					<div class='message'>
+                <div id="tym_msg_wrapper">
+					<div class='error'>
 						<label id='error_message' name='error_message'><?php if(isset($error_message)) echo $error_message; ?></label>
 					</div>
 				</div>

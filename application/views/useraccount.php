@@ -7,7 +7,7 @@
 		<script>
 			$( document ).ready(function() {
 				if($("#success_message").text() != "") {
-					$(".message").fadeIn();
+					$(".notice").fadeIn();
 				}
 			});
 		</script>
@@ -60,8 +60,8 @@
 									</td>
 								</tr>
 							</table>
-							<div id="tym_error_wrapper">
-								<div class='message'>
+							<div id="tym_msg_wrapper">
+								<div class="notice">
 									<label id='success_message' name='success_message'><?php if(isset($message)) echo $message; ?></label>
 								</div>
 							</div>

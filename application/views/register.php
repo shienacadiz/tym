@@ -45,12 +45,12 @@
 				}
 				
 				if(submit) {
-					$(".message").fadeOut("slow");
+					$(".error").fadeOut("slow");
 					$("#register_form").submit();
 				}
 				else {
 					$("#error_message").text(error_message);
-					$(".message").fadeIn("slow");
+					$(".error").fadeIn("slow");
 					return false;
 				}
 			}
@@ -86,8 +86,8 @@
                         <td><input type='text' id='reg_mail' name='reg_mail'/></td>
                     </tr>
                 </table>
-				<div id="tym_error_wrapper">
-					<div class='message'><label id='error_message' name='error_message'></label></div>
+				<div id="tym_msg_wrapper">
+					<div class='error'><label id='error_message' name='error_message'></label></div>
 				</div>
                 <div id="tym_register_button">
                     <a href="javascript:validate_form();">Register</a>
