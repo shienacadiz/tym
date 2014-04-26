@@ -50,8 +50,14 @@ class Resources extends CI_Controller {
 		$data = array('valid'=>1);
 		$resource_user = $this->resources_model->get_resource_owner($id);
 		if($resource_user == $this->session->userdata('username')) {	//this is to check on whether the id to delete is from the active user
-			$this->resources_model->del_resources($id);
-			$data['success_message'] = "Resource successfully deleted";
+			$resource_in_use = $this->resources_model->resource_in_use($id); //check if in use first
+			if($resource_in_use) {
+				$data['error_message'] = "Cannot delete the resource code. Code still in use!";
+			}
+			else {
+				$this->resources_model->del_resources($id);
+				$data['success_message'] = "Resource successfully deleted";
+			}
 		}
 		else {
 			$data['error_message'] = "No illegal deletion allowed!";
