@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title><?php echo TYM_TITLE; ?></title>
-		<script src="<?php echo "$base/$jquery"; ?>"></script>
+		<script src="<?php echo "$base"."$jquery"; ?>"></script>
 		<script>
 			$( document ).ready(function() {
 				if($("#success_message").text() != "") {
@@ -11,24 +11,24 @@
 				}
 			});
 		</script>
-		<link rel="stylesheet" type="text/css" href="<?php echo "$base/$css";?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo "$base"."$css";?>"/>
 	</head>
 	<body>
 		<div id="tym_wrapper">
 			<div id="tym_header"></div>
 			<div id="tym_menubar">
-				<li id="menu_home"><a href='home'></a></li>
-				<li id="menu_reports"><a href='reports'></a></li>
-				<li id="menu_savings"><a href='savings'></a></li>
-				<li id="menu_settings"><a class="active" href='useraccount'></a></li>
-				<li id="menu_logout"><a href='logout'></a></li>
+				<li id="menu_home"><a href='<?php echo $base."home"; ?>'></a></li>
+				<li id="menu_reports"><a href='<?php echo $base."reports"; ?>'></a></li>
+				<li id="menu_savings"><a href='<?php echo $base."savings"; ?>'></a></li>
+				<li id="menu_settings"><a class="active" href='<?php echo $base."useraccount"; ?>'></a></li>
+				<li id="menu_logout"><a href='<?php echo $base."logout"; ?>'></a></li>
 			</div>
 			<div id="tym_content_wrapper">
 				<?php include_once("sidebar.php"); ?>
 				<div id="tym_right_content_wrapper" class="center">
 					<div id="tym_right_content">
 						<h2>User Account Settings</h2>
-						<form action="useraccount" method="POST">
+						<form action="<?php echo $base."useraccount"; ?>" method="POST">
 							<table width='260' class='center'>
 								<tr>
 									<td width='210' class='left'>Enable Banking</td>

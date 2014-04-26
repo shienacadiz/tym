@@ -3,8 +3,8 @@
 	<head>
 		<meta charset='utf-8'/>
 		<title><?php echo TYM_TITLE; ?></title>
-		<link rel='stylesheet' type='text/css' href="<?php echo "$base/$css"; ?>"/>
-		<script src="<?php echo "$base/$jquery"; ?>"></script>
+		<link rel='stylesheet' type='text/css' href="<?php echo "$base"."$css"; ?>"/>
+		<script src="<?php echo "$base"."$jquery"; ?>"></script>
 		<script>
 			function validate_form() {
 				var submit = true;
@@ -58,16 +58,16 @@
 						<div id="tym_sidebar_transactions"></div>
 						<div id="tym_sidebar_menu_box">
 							<ul class="menu_list">
-								<li class="first"><a href='expenses'>Expenses</a></li>
+								<li class="first"><a href='<?php echo $base."expenses"; ?>'>Expenses</a></li>
 								<?php
 								if($this->session->userdata('banking_flag')) {
 									?>
-									<li><a href='withdraw'>Withdraw Money</a></li>
+									<li><a href=<?php echo $base."withdraw"; ?>'>Withdraw Money</a></li>
 									<?php
 								}
 								?>
-								<li><a href='money'>Add Cycle Money</a></li>
-								<li class="last"><a href='cycle'>Next Cycle</a></li>
+								<li><a href='<?php echo $base."money"; ?>'>Add Cycle Money</a></li>
+								<li class="last"><a href='<?php echo $base."cycle"; ?>'>Next Cycle</a></li>
 							 </ul>
 						</div>
 					</div>
@@ -75,8 +75,8 @@
 						<div id="tym_sidebar_setup"></div>
 						<div id="tym_sidebar_menu_box">
 							<ul class="menu_list">
-								<li class="first"><a href='category'>Categories</a></li>
-								<li class="last"><a class='active' href='resources'>Resources</a></li>
+								<li class="first"><a href='<?php echo $base."category"; ?>'>Categories</a></li>
+								<li class="last"><a class='active' href='<?php echo $base."resources"; ?>'>Resources</a></li>
 							</ul>
 						</div>
 					</div>
@@ -101,8 +101,8 @@
 								?>
 									<td class='left' width='150'><?php echo stripslashes($resource['resource_code']); ?></td>
 									<td class='left' width='290'><?php echo stripslashes($resource['resource_desc']); ?></td>
-									<td width='30'><a href="resources/edit/<?php echo $resource['resource_id']; ?>">Edit</a></td>
-									<td width='40'><a href="resources/del/<?php echo $resource['resource_id']; ?>" onclick="return confirm('Are you sure you want to delete: <?php echo stripslashes($resource['resource_code']); ?>')">Delete</a></td>							
+									<td width='30'><a href="<?php echo $base."resources/edit/".$resource['resource_id']; ?>">Edit</a></td>
+									<td width='40'><a href="<?php echo $base."resources/del/".$resource['resource_id']; ?>" onclick="return confirm('Are you sure you want to delete: <?php echo stripslashes($resource['resource_code']); ?>')">Delete</a></td>							
 								</tr>
 								<?php
 								$ctr++;
@@ -113,7 +113,7 @@
 							</tr>
 						</table>
 						<br/><br/>		
-						<form action='resources' method='POST' name='resource_form' id='resource_form'>
+						<form action='<?php echo $base."resources"; ?>' method='POST' name='resource_form' id='resource_form'>
 						<table width='500' class='center'>
 							<tr>
 								<td colspan='5'><?php echo $label_title; ?></td>

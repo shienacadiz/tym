@@ -3,8 +3,8 @@
 	<head>
         <meta charset="utf-8"/>
 		<title><?php echo TYM_TITLE; ?></title>
-		<script src="<?php echo "$base/$jquery"; ?>"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo "$base/$css"; ?>"/>
+		<script src="<?php echo "$base"."$jquery"; ?>"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo "$base"."$css"; ?>"/>
 		<script>
 			function validate_form() {
 				var error_message = "";
@@ -58,11 +58,11 @@
 	</head>
 	<body>
 		<div id="tym_common_invisible_box">
-			<a href='index' class="blue_link"><-Back</a>
+			<a href='<?php echo $base."index"; ?>' class="blue_link"><-Back</a>
         </div>
         <div id="tym_common_box">
             <h1 class="header">Registration</h1>
-			<form name='register_form' id='register_form' method="POST" action="register">
+			<form name='register_form' id='register_form' method="POST" action="<?php echo $base."register"; ?>">
                 <table class="center">
                     <tr>
                         <td class='left blue bold' colspan='2'>Login Information</td>

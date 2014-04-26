@@ -3,17 +3,17 @@
 	<head>
     	<meta charset="utf-8"/>
 		<title><?php echo TYM_TITLE; ?></title>
-		<link rel="stylesheet" type="text/css" href="<?php echo "$base/$css";?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo "$base"."$css";?>"/>
 	</head>
 	<body>
 		<div id="tym_wrapper">
 			<div id="tym_header"></div>
 			<div id="tym_menubar">
-				<li id="menu_home"><a class="active" href='home'></a></li>
-				<li id="menu_reports"><a href='reports'></a></li>
-				<li id="menu_savings"><a href='savings'></a></li>
-				<li id="menu_settings"><a href='useraccount'></a></li>
-				<li id="menu_logout"><a href='logout'></a></li>
+				<li id="menu_home"><a class="active" href='<?php echo $base."home";?>'></a></li>
+				<li id="menu_reports"><a href='<?php echo $base."reports";?>'></a></li>
+				<li id="menu_savings"><a href='<?php echo $base."savings";?>'></a></li>
+				<li id="menu_settings"><a href='<?php echo $base."useraccount";?>'></a></li>
+				<li id="menu_logout"><a href='<?php echo $base."logout";?>'></a></li>
 			</div>
 			<div id="tym_content_wrapper">
 				<?php include_once("sidebar.php"); ?>

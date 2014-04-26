@@ -3,8 +3,8 @@
 	<head>
     	<meta charset="utf-8"/>
 		<title><?php echo TYM_TITLE; ?></title>
-		<link rel="stylesheet" type="text/css" href="<?php echo "$base/$css";?>"/>
-		<script src="<?php echo "$base/$jquery"; ?>"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo "$base"."$css";?>"/>
+		<script src="<?php echo "$base"."$jquery"; ?>"></script>
 		<script>
 			function onclick_banking() {
 				if($("#enable_banking").is(':checked')) {
@@ -98,11 +98,11 @@
 	<body>
 		<div id="tym_wrapper">
 			<div id="tym_common_invisible_box" style="width:600px">
-				<a href='logout' class="blue_link right" style="display:block;">Log out-></a>
+				<a href='<?php echo $base."logout"; ?>' class="blue_link right" style="display:block;">Log out-></a>
 			</div>
 			<div id="tym_common_box" style="width:600px">
 				<div class="blue bold">To continue using this tracker, you are required to enter the following information:</div><br/>
-				<form action='home' method='POST' name='home_ini_form' id='home_ini_form'>
+				<form action='<?php echo $base."home"; ?>' method='POST' name='home_ini_form' id='home_ini_form'>
 					<table width='400' class="center">
 						<tr>
 							<td width='175' class="left">Enable banking</td>

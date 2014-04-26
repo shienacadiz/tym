@@ -3,7 +3,7 @@
 	<head>
         <meta charset="utf-8" />
 		<title><?php echo TYM_TITLE; ?></title>
-		<script src="<?php echo "$base/$jquery"; ?>"></script>
+		<script src="<?php echo "$base"."$jquery"; ?>"></script>
 		<script type="text/javascript">
 			function delayer(){
 				window.location = "home"
@@ -39,7 +39,7 @@
 				}
 			});
 		</script>
-        <link rel="stylesheet" type="text/css" href="<?php echo "$base/$css"; ?>"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo "$base"."$css"; ?>"/>
 	</head>
 	<body>
 		<?php 
@@ -55,10 +55,10 @@
 			}
 		?>
         <div id="tym_login_logo">
-            <img src="<?php echo "$base/assets/img/TYM_Logo_resized.png";?>"/>
+            <img src="<?php echo "$base"."assets/img/TYM_Logo_resized.png";?>"/>
         </div>
         <div id="tym_common_box">
-            <form action='index' method='POST' name='login_form' id='login_form'>
+            <form action='<?php echo $base."index"; ?>' method='POST' name='login_form' id='login_form'>
                 <table class="center">
                     <tr>
                       <td class="blue_label">USERNAME :</td>
@@ -80,7 +80,7 @@
                 <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" onclick="return validate_form();"/>
             </form>
         </div>
-        <div class="center">Not yet a member? <a href='register' class="blue_link">Register here</a>!</div>
+        <div class="center">Not yet a member? <a href='<?php echo $base."register"; ?>' class="blue_link">Register here</a>!</div>
 		<br/>
 		<div id="tym_login_blue_box" class="center">
 			(c) Shiena Kaye Cadiz. 2014.

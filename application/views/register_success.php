@@ -8,7 +8,7 @@
 				window.location = "index"
 			}
 		</script>
-		<link rel="stylesheet" type="text/css" href="<?php echo "$base/$css"; ?>"/>
+		<link rel="stylesheet" type="text/css" href="<?php echo "$base"."$css"; ?>"/>
 	</head>
 	<body>
 		<div id="tym_common_box">
