@@ -18,10 +18,11 @@
 					submit = false;
 				}
 				else {
+					var id = $("#resource_id").val();
 					var code = $("#resource_code").val();
-					for(x=0 ; x<existing_code.length && submit == true ; x++) {
-						if(existing_code[x].toLowerCase() == code.toLowerCase()) {
-							error_message = "Code already exist";
+					for(x=0 ; x<existing_code['code'].length && submit == true ; x++) {
+						if(((id != null && existing_code['id'][x] != id) || (id==null)) && existing_code['code'][x].toLowerCase() == code.toLowerCase()) {
+							error_message = "Code already exists";
 							$("#resource_code").focus();
 							submit = false;
 						}
@@ -145,7 +146,7 @@
 								<label id='error_message' name='error_message'><?php if(isset($error_message)) echo $error_message; ?></label>
 							</div>
 						</div>
-						<input type='hidden' name='resource_id' value='<?php if(isset($edit['resource_id'])) echo $edit['resource_id']; ?>'/>
+						<input type='hidden' name='resource_id' id='resource_id' value='<?php if(isset($edit['resource_id'])) echo $edit['resource_id']; ?>'/>
 						</form>
 					</div>
 				</div>

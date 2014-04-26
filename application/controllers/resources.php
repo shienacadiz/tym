@@ -68,9 +68,11 @@ class Resources extends CI_Controller {
 		$data['jquery'] = $this->config->item('jquery');
 		
 		$data['resources_array'] = $this->resources_model->get_all_resources($this->session->userdata('username'));
-		$data['code_array'] = array();
+		$data['code_array']['code'] = array();
+		$data['code_array']['id'] = array();
 		foreach($data['resources_array'] AS $resources) {
-			array_push($data['code_array'], $resources['resource_code']);
+			array_push($data['code_array']['code'], stripslashes($resources['resource_code']));
+			array_push($data['code_array']['id'], $resources['resource_id']);
 		}
 		
 		if(!(isset($data['label_title']))) $data['label_title'] = "Add another resources";
