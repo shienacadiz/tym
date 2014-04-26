@@ -44,6 +44,7 @@ if database field name - with underscores ::: category_code
 [DONE][1/22/2014] withdraw.php - 'Current cash on hand' computation is wrong
 Add Cycle Money - List must be sorted by date
 Add Cycle Money - Date later than the cycle date must be validated correctly
+[DONE][4/26/2014] Static Data - should not be deleted when code is in use.
 
 ::: ENHANCEMENTS :: 
 - reports.php - When clicked a category expense, user will be directed to expenses.php 
