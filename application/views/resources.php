@@ -9,6 +9,7 @@
 			function validate_form() {
 				var submit = true;
 				var error_message = "";
+				var existing_code = <?php echo json_encode($code_array); ?>;
 				$(".notice").fadeOut("slow");
 				
 				if($("#resource_code").val() == "") {
@@ -16,7 +17,17 @@
 					$("#resource_code").focus();
 					submit = false;
 				}
-				else if ($("#resource_desc").val() == "") {
+				else {
+					var code = $("#resource_code").val();
+					for(x=0 ; x<existing_code.length && submit == true ; x++) {
+						if(existing_code[x].toLowerCase() == code.toLowerCase()) {
+							error_message = "Code already exist";
+							$("#resource_code").focus();
+							submit = false;
+						}
+					}	
+				}
+				if (submit && ($("#resource_desc").val() == "")) {
 					error_message = "Enter a resource description";
 					$("#resource_desc").focus();
 					submit = false;
@@ -120,9 +131,9 @@
 							</tr>
 							<tr>
 								<td>Code</td>
-								<td><input type='text' name='resource_code' id='resource_code' size='10'/></td>
+								<td><input type='text' name='resource_code' id='resource_code' size='10' value="<?php if(isset($edit['resource_code'])) echo stripslashes($edit['resource_code']); ?>"/></td>
 								<td>Description</td>
-								<td><input type='text' name='resource_desc' id='resource_desc' size='25'/></td>
+								<td><input type='text' name='resource_desc' id='resource_desc' size='25' value="<?php if(isset($edit['resource_desc'])) echo stripslashes($edit['resource_desc']); ?>"/></td>
 								<td width='65'><input type='submit' value='<?php echo $label_button	; ?>' name='submit_button'/></td>
 							</tr>
 						</table>
@@ -134,6 +145,7 @@
 								<label id='error_message' name='error_message'><?php if(isset($error_message)) echo $error_message; ?></label>
 							</div>
 						</div>
+						<input type='hidden' name='resource_id' value='<?php if(isset($edit['resource_id'])) echo $edit['resource_id']; ?>'/>
 						</form>
 					</div>
 				</div>

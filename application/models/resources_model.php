@@ -40,5 +40,10 @@ class Resources_model extends CI_Model {
 			return $result;
 		}
 	}
+	
+	public function get_resource($id) {
+		$query = $this->db->get_where('resources', array('resource_id' => $id));
+		return $query->row_array();
+	}
 }
 ?>
