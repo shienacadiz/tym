@@ -74,7 +74,7 @@
 								<?php
 								if($this->session->userdata('banking_flag')) {
 									?>
-									<li><a href=<?php echo $base."withdraw"; ?>'>Withdraw Money</a></li>
+									<li><a href='<?php echo $base."withdraw"; ?>'>Withdraw Money</a></li>
 									<?php
 								}
 								?>
