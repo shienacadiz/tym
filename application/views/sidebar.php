@@ -4,7 +4,13 @@
 		<div id="tym_sidebar_menu_box">
 			<ul class="menu_list">
 				<li class="first"><a href='expenses'>Expenses</a></li>
-				<li><a href='withdraw'>Withdraw Money</a></li>
+				<?php
+				if($this->session->userdata('banking_flag')) {
+					?>
+					<li><a href='withdraw'>Withdraw Money</a></li>
+					<?php
+				}
+				?>
 				<li><a href='money'>Add Cycle Money</a></li>
 				<li class="last"><a href='cycle'>Next Cycle</a></li>
 			 </ul>
