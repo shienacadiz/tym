@@ -37,10 +37,18 @@ class Cycle_model extends CI_Model {
 		return $this->db->insert_id();
 	
 	}
-	public function get_start_date($cycle_id) {
-		$this->db->select('from_month, from_day, from_year');
+	public function get_cycle($cycle_id) {
+		$this->db->select('cycle.*, resources.resource_code');
+		$this->db->join('resources','resources.resource_id=cycle.resource_id');
 		$query = $this->db->get_where('cycle', array('cycle_id' => $cycle_id));
 		return $query->row_array();
+	}
+	
+	public function get_all_cycle_dates($user) {
+		$this->db->select('cycle_id, from_month, from_day, from_year, to_month, to_day, to_year');
+		$this->db->order_by('cycle_id', 'desc');
+		$query = $this->db->get_where('cycle', array('user' => $user));
+		return $query->result_array();
 	}
 }
 ?>

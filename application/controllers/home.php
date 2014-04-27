@@ -92,7 +92,7 @@ class Home extends CI_Controller {
 			//gets the Start Date of the cycle
 			$session_cycle_id = $this->session->userdata('cycle_id');
 			$session_username = $this->session->userdata('username');
-			extract($this->cycle_model->get_start_date($session_cycle_id));	//returns from_month, from_day, from_year
+			extract($this->cycle_model->get_cycle($session_cycle_id));
 			$data['start_date'] = format_month($from_month)." $from_day, $from_year";
 			$data['overall_budget'] = $this->money_model->get_overall_budget($session_cycle_id);
 			$data['total_remaining'] = $this->money_model->get_total_remaining_money($session_username, $session_cycle_id);

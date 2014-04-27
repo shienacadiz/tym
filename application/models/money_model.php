@@ -30,6 +30,12 @@ class Money_model extends CI_Model {
 		return $this->db->insert('money', $data);
 	}
 	
+	public function get_money($cycle_id, $money_id = FALSE) {
+		$query = $this->db->query("select m.*, r.resource_code from money m left join resources r on r.resource_id = m.resource_id where m.cycle_id = 15 
+			ORDER BY STR_TO_DATE(CONCAT(m.month,'-',m.day,'-',m.year),'%m-%d-%Y'), m.money_id;");
+		return $query->result_array();
+	}
+	
 	public function get_overall_budget($cycle_id) {
 		$query = $this->db->query("SELECT get_overall_budget($cycle_id)");
 		foreach($query->row_array() AS $result) {
