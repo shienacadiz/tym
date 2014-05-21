@@ -5,6 +5,7 @@ class Money extends CI_Controller {
 		$this->load->model('money_model');
 		$this->load->model('cycle_model');
 		$this->load->model('resources_model');
+		$this->load->model('savings_model');
 	}
 	
 	public function index() {
@@ -17,6 +18,28 @@ class Money extends CI_Controller {
 		$data['filter_cycle'] = $this->session->userdata('cycle_id'); //default is current cycle
 		if($_POST) {
 			if($this->input->post('this_month')) {
+				if($this->input->post('this_add_to') != 3) {
+					$data['active'] = $this->money_model->new_money(
+						$this->session->userdata('username'),
+						$this->session->userdata('cycle_id'),
+						$this->input->post('this_resource'),
+						$this->input->post('this_month'),
+						$this->input->post('this_day'),
+						$this->input->post('this_year'),
+						$this->input->post('this_description'),
+						$this->input->post('this_amount'),
+						$this->input->post('this_add_to')
+					);
+					$data['success_message'] = "Money added successfully";
+				}
+				else { //this money will be added on SAVINGS
+					$this->savings_model->new_savings(
+						$this->session->userdata('cycle_id'),
+						$this->session->userdata('username'),
+						$this->input->post('this_amount')
+					);
+					$data['success_message'] = "Money added successfully on savings";
+				}
 			}
 			else {	// means form is submitted through filter 
 				$filter_cycle = $this->input->post('filter');

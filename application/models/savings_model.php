@@ -20,5 +20,10 @@ class Savings_model extends CI_Model {
 		$query = $this->db->get_where('savings', array('user'=>$username, 'cylce_id'=>$cycle_id));
 		return $query->result_array();
 	}
+	
+	public function new_savings($cycle_id, $user, $amount) {
+		$data = array("cycle_id" => $cycle_id, "user" => $user, "amount" => $amount);
+		$this->db->insert("savings", $data);
+	}
 }
 ?>

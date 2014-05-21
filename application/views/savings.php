@@ -35,11 +35,13 @@
 							}
 							else {
 								foreach($savings_array AS $savings) {
-									if($savings['to_month'] == 0) {
+									if($savings['to_year'] == 0) {
 										$cycle_span = format_month($savings['from_month'])." ".$savings['from_day'].", ".$savings['from_year']." - PRESENT";
 									}
-									$cycle_span = format_month($savings['from_month'])." ".$savings['from_day'].", ".$savings['from_year']." - ".
+									else {
+										$cycle_span = format_month($savings['from_month'])." ".$savings['from_day'].", ".$savings['from_year']." - ".
 										format_month($savings['to_month'])." ".$savings['to_day'].", ".$savings['to_year'];
+									}
 									$savings['amount'] = number_format($savings['amount'],2);
 									?>
 									<tr>

@@ -27,7 +27,8 @@ class Money_model extends CI_Model {
 			'amount' => $amount,
 			'onHand_onBank' => $onHand_onBank
 		);
-		return $this->db->insert('money', $data);
+		$this->db->insert('money', $data);
+		return $this->db->insert_id();;
 	}
 	
 	public function get_money($cycle_id, $money_id = FALSE) {

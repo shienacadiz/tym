@@ -7,6 +7,9 @@
 		<script>
 			function validate_form() {
 				var submit = true;
+				var filter_from_date = new Date($("#filter_year").val(), $("#filter_month").val()-1, $("#filter_day").val());
+				var input_from_date = new Date($("#this_year").val(), $("#this_month").val()-1, $("#this_day").val());
+				$(".notice").fadeOut("slow");
 				
 				if($("#this_month").val() == "") {
 					error_message = "Please select the month";
@@ -21,6 +24,11 @@
 				else if($("#this_year").val() == "") {
 					error_message = "Please select the year";
 					$("#this_year").focus();
+					submit = false;
+				}
+				else if(input_from_date < filter_from_date) {
+					error_message = "Date must be on or later than the starting date";
+					$("#this_month").focus();
 					submit = false;
 				}
 				else if($("#this_resource").val() == "") {
@@ -58,6 +66,7 @@
 					$("#filter_form").submit();
 				});
 				$("#submit").click(function() {
+					$("tr").removeAttr('style');
 					validate_form();
 				});
 				if($("#success_message").text() != "") {
@@ -113,9 +122,12 @@
 												$from_date = format_month($cycle['from_month'])." ".$cycle['from_day'].", ".$cycle['from_year'];
 												if($cycle['cycle_id'] == $this->session->userdata('cycle_id')) {
 													$to_date = "PRESENT";
+													$filter_month = $cycle['from_month'];
+													$filter_day = $cycle['from_day'];
+													$filter_year = $cycle['from_year'];
 												}
 												else {
-													$to_date = format_month($cycle['to_month'])." ".$cycle['to_date'].", ".$cycle['to_year'];
+													$to_date = format_month($cycle['to_month'])." ".$cycle['to_day'].", ".$cycle['to_year'];
 												}
 												$full_date = $from_date." - ".$to_date;
 												if($cycle['cycle_id'] == $filter_cycle) {
@@ -127,6 +139,9 @@
 											}
 											?>
 										</select>
+										<input type='hidden' id='filter_month' value='<?php echo $filter_month; ?>'/>
+										<input type='hidden' id='filter_day' value='<?php echo $filter_day; ?>'/>
+										<input type='hidden' id='filter_year' value='<?php echo $filter_year; ?>'/>
 									</td>
 								</tr>
 							</table>
@@ -156,11 +171,16 @@
 									}
 									?>
 								</tr>
-								<?php
+								<?php	
 								foreach($money_array AS $money) {
 									$full_date = format_month($money['month'])." ".$money['day'].", ".$money['year'];
+									if(isset($active) AND $active == $money['money_id']){
+										echo "<tr style='background-color:#7CA6BA;'>";
+									}
+									else {
+										echo "<tr>";
+									}
 									?>
-									<tr>
 										<td class='left'><?php echo $full_date; ?></td>
 										<td class='left'><?php echo $money['description']; ?></td>
 										<td class='left'>
@@ -191,6 +211,22 @@
 										}
 										$total_money += $money['amount'];
 										?>
+									</tr>
+									<?php
+								}
+								?>
+								<tr>
+									<td colspan='2'></td>
+									<td class='bold blue'>TOTAL</td>
+									<td class='left blue bold'><?php echo number_format($total_money,2); ?></td>
+								</tr>
+								<?php
+								if($this->session->userdata('banking_flag')) {
+									?>
+									<tr>
+										<td colspan='2'>* On hand</td>
+										<td><b>On Bank</b></td>
+										<td class='left'><b><?php echo number_format($total_on_bank,2); ?></b></td>
 									</tr>
 									<?php
 								}
